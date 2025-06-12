@@ -1,0 +1,336 @@
+[
+  {
+    "sigla": "XDES01",
+    "nome": "Fundamentos de Programação",
+    "ch": 4,
+    "periodo": 1,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "SAHC04",
+    "nome": "Projeto Integrado",
+    "ch": 2,
+    "periodo": 1,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "SAHC05",
+    "nome": "Fundamentos de Sistemas de Informação",
+    "ch": 4,
+    "periodo": 1,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "XDES03",
+    "nome": "Programação Web",
+    "ch": 4,
+    "periodo": 3,
+    "obrigatorio": true,
+    "requisitos": [
+      "XDES02-COM220-ECOP13A-ECOT03A"
+    ]
+  },
+  {
+    "sigla": "SDES05",
+    "nome": "Engenharia de Software II",
+    "ch": 4,
+    "periodo": 3,
+    "obrigatorio": true,
+    "requisitos": [
+      "XDES04-COM210"
+    ]
+  },
+  {
+    "sigla": "STCO02",
+    "nome": "Algoritmos e Programação II",
+    "ch": 4,
+    "periodo": 3,
+    "obrigatorio": true,
+    "requisitos": [
+      "STCO01-CTCO01-COM111"
+    ]
+  },
+  {
+    "sigla": "SRSC03",
+    "nome": "Organização e Arquitetura de Computadores",
+    "ch": 4,
+    "periodo": 3,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "SPAD02",
+    "nome": "Banco de Dados II",
+    "ch": 4,
+    "periodo": 5,
+    "obrigatorio": true,
+    "requisitos": [
+      "XPAD01-COM230"
+    ]
+  },
+  {
+    "sigla": "SPAD03",
+    "nome": "Introdução à Análise de Dados",
+    "ch": 4,
+    "periodo": 5,
+    "obrigatorio": true,
+    "requisitos": [
+      "XMAC02-MAT013",
+      "XPAD01-COM230"
+    ]
+  },
+  {
+    "sigla": "XRSC01",
+    "nome": "Redes de Computadores",
+    "ch": 4,
+    "periodo": 5,
+    "obrigatorio": true,
+    "requisitos": [
+      "SRSC02-CRSC02-COM120-ECOS01A-ECOS11A"
+    ]
+  },
+  {
+    "sigla": "SDES07",
+    "nome": "Desenvolvimento de Sistemas na Web",
+    "ch": 4,
+    "periodo": 7,
+    "obrigatorio": true,
+    "requisitos": [
+      "XDES04-XPAD01-XDES03-COM220-COM230-COM222"
+    ]
+  },
+  {
+    "sigla": "XAHC02",
+    "nome": "Interação Humano Computador",
+    "ch": 4,
+    "periodo": 7,
+    "obrigatorio": true,
+    "requisitos": [
+      "XDES03-XDES04-COM210-COM222-ECOX05"
+    ]
+  },
+  {
+    "sigla": "SADG01",
+    "nome": "Gestão e Governança de TI",
+    "ch": 4,
+    "periodo": 9,
+    "obrigatorio": true,
+    "requisitos": [
+      "IEPG22"
+    ]
+  },
+  {
+    "sigla": "XDES02",
+    "nome": "Programação Orientada a Objetos",
+    "ch": 4,
+    "periodo": 2,
+    "obrigatorio": true,
+    "requisitos": [
+      "XDES01-COM111-ECOP11A"
+    ]
+  },
+  {
+    "sigla": "XDES04",
+    "nome": "Engenharia de Software I",
+    "ch": 4,
+    "periodo": 2,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "STCO01",
+    "nome": "Algoritmos e Programação I",
+    "ch": 4,
+    "periodo": 2,
+    "obrigatorio": true,
+    "requisitos": [
+      "XDES01-COM110"
+    ]
+  },
+  {
+    "sigla": "XMAC01",
+    "nome": "Matemática Discreta",
+    "ch": 4,
+    "periodo": 2,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "XPAD01",
+    "nome": "Banco de Dados I",
+    "ch": 4,
+    "periodo": 4,
+    "obrigatorio": true,
+    "requisitos": [
+      "STCO02-CTCO02-COM112-ECOT02A-ECOT12A"
+    ]
+  },
+  {
+    "sigla": "XMAC02",
+    "nome": "Métodos Matemáticos para Análise de Dados",
+    "ch": 4,
+    "periodo": 4,
+    "obrigatorio": true,
+    "requisitos": [
+      "MAT00A",
+      "XMAC01-ECOM01A",
+      "STCO01-CTCO01-ECOP02A"
+    ]
+  },
+  {
+    "sigla": "SMAC03",
+    "nome": "Grafos",
+    "ch": 4,
+    "periodo": 4,
+    "obrigatorio": true,
+    "requisitos": [
+      "STCO01-CTCO01-COM111"
+    ]
+  },
+  {
+    "sigla": "SRSC02",
+    "nome": "Sistemas Operacionais",
+    "ch": 4,
+    "periodo": 4,
+    "obrigatorio": true,
+    "requisitos": [
+      "STCO01-CTCO01-SRSC03-SIN120-ECOP02A-ECOX01"
+    ]
+  },
+  {
+    "sigla": "SDES06",
+    "nome": "Gerência de Projeto de Software",
+    "ch": 4,
+    "periodo": 6,
+    "obrigatorio": true,
+    "requisitos": [
+      "XDES04-COM210-ECOT01A-ECOT11A"
+    ]
+  },
+  {
+    "sigla": "XMCO01",
+    "nome": "Inteligência Artificial",
+    "ch": 4,
+    "periodo": 6,
+    "obrigatorio": true,
+    "requisitos": [
+      "XMAC02-MAT013"
+    ]
+  },
+  {
+    "sigla": "SDES07",
+    "nome": "Desenvolvimento de Sistemas Web",
+    "ch": 4,
+    "periodo": 8,
+    "obrigatorio": true,
+    "requisitos": [
+      "XDES04-XPAD01-XDES03-COM220-COM230-COM222"
+    ]
+  },
+  {
+    "sigla": "XAHC01",
+    "nome": "Computação e Sociedade",
+    "ch": 4,
+    "periodo": 8,
+    "obrigatorio": true,
+    "requisitos": [
+      "XRSC01",
+      "XDES04",
+      "IEPG21-ADM08H-ADM51H-ADM52H-ADM54H-ADM58H-LET007"
+    ]
+  },
+  {
+    "sigla": "XAHC03",
+    "nome": "Metodologia Científica",
+    "ch": 4,
+    "periodo": 8,
+    "obrigatorio": true,
+    "requisitos": [
+      "XRSC01",
+      "CTCO04-ADM51E"
+    ]
+  },
+  {
+    "sigla": "MATO0A",
+    "nome": "Cálculo A",
+    "ch": 4,
+    "periodo": 1,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "IEPG01",
+    "nome": "Empreendedorismo e Inovação",
+    "ch": 3,
+    "periodo": 1,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "IEPG22",
+    "nome": "Administração Aplicada",
+    "ch": 2,
+    "periodo": 1,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "IEPG20",
+    "nome": "Introdução à Economia",
+    "ch": 3,
+    "periodo": 3,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "ADM51E",
+    "nome": "Gestão do Conhecimento",
+    "ch": 3,
+    "periodo": 5,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "IEPG04",
+    "nome": "Mapeamento de Processos",
+    "ch": 2,
+    "periodo": 2,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "IEPG14",
+    "nome": "Comportamento Organizacional I",
+    "ch": 2,
+    "periodo": 4,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "IEPG10",
+    "nome": "Engenharia Econômica (COM311)",
+    "ch": 3,
+    "periodo": 6,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "ADM51H",
+    "nome": "Ciências, Tecnologias e Organizações",
+    "ch": 3,
+    "periodo": 5,
+    "obrigatorio": false,
+    "requisitos": []
+  },
+  {
+    "sigla": "IEPG21",
+    "nome": "Ciências Humanas e Sociais (ou equivalente)",
+    "ch": 3,
+    "periodo": 5,
+    "obrigatorio": false,
+    "requisitos": []
+  }
+]

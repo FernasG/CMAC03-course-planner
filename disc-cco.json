@@ -1,0 +1,310 @@
+[
+  {
+    "sigla": "XDES01",
+    "nome": "Fundamentos de Programação",
+    "ch": 4,
+    "periodo": 1,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "CRSC03",
+    "nome": "Arquitetura de Computadores I",
+    "ch": 4,
+    "periodo": 1,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "XMAC01",
+    "nome": "Matemática Discreta",
+    "ch": 4,
+    "periodo": 1,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "CAHC04",
+    "nome": "Projeto Integrado",
+    "ch": 2,
+    "periodo": 1,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "XDES02",
+    "nome": "Programação Orientada a Objetos",
+    "ch": 4,
+    "periodo": 3,
+    "obrigatorio": true,
+    "requisitos": [
+      "XDES01-COM111-ECOP11A"
+    ]
+  },
+  {
+    "sigla": "XDES04",
+    "nome": "Engenharia de Software I",
+    "ch": 4,
+    "periodo": 3,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "CTCO02",
+    "nome": "Algoritmos e Estrutura de Dados II",
+    "ch": 4,
+    "periodo": 3,
+    "obrigatorio": true,
+    "requisitos": [
+      "CTCO01-STCO01-COM111"
+    ]
+  },
+  {
+    "sigla": "CRSC02",
+    "nome": "Sistemas Operacionais",
+    "ch": 4,
+    "periodo": 3,
+    "obrigatorio": true,
+    "requisitos": [
+      "CTCO01-STCO01",
+      "CRSC04"
+    ]
+  },
+  {
+    "sigla": "CMAC03",
+    "nome": "Algoritmos em Grafos",
+    "ch": 4,
+    "periodo": 3,
+    "obrigatorio": true,
+    "requisitos": [
+      "CTCO01-STCO01-COM111"
+    ]
+  },
+  {
+    "sigla": "XMAC02",
+    "nome": "Métodos Matemáticos para Análise de Dados",
+    "ch": 4,
+    "periodo": 3,
+    "obrigatorio": true,
+    "requisitos": [
+      "MAT00A",
+      "STCO01-CTCO01-ECOP02A",
+      "XMAC01-ECOM01A"
+    ]
+  },
+  {
+    "sigla": "CTCO05",
+    "nome": "Teoria da Computação",
+    "ch": 4,
+    "periodo": 5,
+    "obrigatorio": true,
+    "requisitos": [
+      "CDES05-CTCO04-CIC110-CIC131-ECOM03A"
+    ]
+  },
+  {
+    "sigla": "CTCO03",
+    "nome": "Análise e Projeto Orientados a Objetos",
+    "ch": 4,
+    "periodo": 5,
+    "obrigatorio": true,
+    "requisitos": [
+      "XDES02-COM220"
+    ]
+  },
+  {
+    "sigla": "XPAD01",
+    "nome": "Banco de Dados I",
+    "ch": 4,
+    "periodo": 5,
+    "obrigatorio": true,
+    "requisitos": [
+      "STCO02-CTCO02-COM112-ECOT02A-ECOT12A"
+    ]
+  },
+  {
+    "sigla": "XMCO01",
+    "nome": "Inteligência Artificial",
+    "ch": 4,
+    "periodo": 5,
+    "obrigatorio": true,
+    "requisitos": [
+      "XMAC02-MAT013"
+    ]
+  },
+  {
+    "sigla": "CMCO05",
+    "nome": "Introdução à Computação Visual",
+    "ch": 4,
+    "periodo": 5,
+    "obrigatorio": true,
+    "requisitos": [
+      "XMAC02",
+      "XDES02-ECOP13A"
+    ]
+  },
+  {
+    "sigla": "XAHC01",
+    "nome": "Computação e Sociedade",
+    "ch": 4,
+    "periodo": 7,
+    "obrigatorio": true,
+    "requisitos": [
+      "XRSC01",
+      "XDES04",
+      "IEPG21-ADM08H-ADM51H-ADM52H-ADM54H-ADM58H-LET007"
+    ]
+  },
+  {
+    "sigla": "XAHC03",
+    "nome": "Metodologia Científica",
+    "ch": 4,
+    "periodo": 7,
+    "obrigatorio": true,
+    "requisitos": ["XRSC01", "CTCO04-ADM51E"]
+  },
+  {
+    "sigla": "CTCO01",
+    "nome": "Algoritmos e Estrutura de Dados I",
+    "ch": 4,
+    "periodo": 2,
+    "obrigatorio": true,
+    "requisitos": ["XDES01-COM110"]
+  },
+  {
+    "sigla": "CRSC04",
+    "nome": "Arquitetura de Computadores II",
+    "ch": 4,
+    "periodo": 2,
+    "obrigatorio": true,
+    "requisitos": ["CRSC03-CIC120"]
+  },
+  {
+    "sigla": "CMAC04",
+    "nome": "Modelagem Computacional",
+    "ch": 4,
+    "periodo": 2,
+    "obrigatorio": true,
+    "requisitos": ["MAT00A"]
+  },
+  {
+    "sigla": "XDES03",
+    "nome": "Programação Web",
+    "ch": 4,
+    "periodo": 4,
+    "obrigatorio": true,
+    "requisitos": ["XDES02-COM220-ECOP13A-ECOT03A"]
+  },
+  {
+    "sigla": "CTCO04",
+    "nome": "Projeto e Análise de Algoritmos",
+    "ch": 4,
+    "periodo": 4,
+    "obrigatorio": true,
+    "requisitos": ["CTCO02-COM112"]
+  },
+  {
+    "sigla": "XRSC01",
+    "nome": "Redes de Computadores",
+    "ch": 4,
+    "periodo": 4,
+    "obrigatorio": true,
+    "requisitos": ["SRSC02-CRSC02-COM120-ECOS01A-ECOS11A"]
+  },
+  {
+    "sigla": "CDES05",
+    "nome": "Programação Lógica e Funcional",
+    "ch": 4,
+    "periodo": 4,
+    "obrigatorio": true,
+    "requisitos": ["XMAC01-MAT015-MAT017-MAT057-ECOM01A"]
+  },
+  {
+    "sigla": "CRSC05",
+    "nome": "Sistemas Embarcados",
+    "ch": 4,
+    "periodo": 4,
+    "obrigatorio": true,
+    "requisitos": ["SRSC02-CRSC02-COM120"]
+  },
+  {
+    "sigla": "CMAC05",
+    "nome": "Cálculo Numérico para Computação",
+    "ch": 4,
+    "periodo": 4,
+    "obrigatorio": true,
+    "requisitos": ["MAT00B-MAT002"]
+  },
+  {
+    "sigla": "CTCO06",
+    "nome": "Compiladores",
+    "ch": 4,
+    "periodo": 6,
+    "obrigatorio": true,
+    "requisitos": ["CTCO05-CIC132-ECOM05A"]
+  },
+  {
+    "sigla": "XAHC02",
+    "nome": "Interação Humano Computador",
+    "ch": 4,
+    "periodo": 6,
+    "obrigatorio": true,
+    "requisitos": ["XDES03-XDES04-COM210-COM222-ECOX05"]
+  },
+  {
+    "sigla": "MATO0A",
+    "nome": "Cálculo A",
+    "ch": 4,
+    "periodo": 1,
+    "obrigatorio": true,
+    "requisitos": []
+  },
+  {
+    "sigla": "MATO0B",
+    "nome": "Cálculo B",
+    "ch": 4,
+    "periodo": 2,
+    "obrigatorio": true,
+    "requisitos": ["MATO0A"]
+  },
+  {
+    "sigla": "ADM51H",
+    "nome": "Ciências, Tecnologias e Organizações",
+    "ch": 3,
+    "periodo": 5,
+    "obrigatorio": false,
+    "requisitos": []
+  },
+  {
+    "sigla": "IEPG21",
+    "nome": "Ciências Humanas e Sociais (ou equivalente)",
+    "ch": 3,
+    "periodo": 5,
+    "obrigatorio": false,
+    "requisitos": []
+  },
+  {
+    "sigla": "IEPG21",
+    "nome": "Ciências Humanas e Sociais",
+    "ch": 3,
+    "periodo": 2,
+    "obrigatorio": false,
+    "requisitos": []
+  },
+  {
+    "sigla": "ADM54H",
+    "nome": "Gestão de Carreira",
+    "ch": 2,
+    "periodo": 2,
+    "obrigatorio": false,
+    "requisitos": []
+  },
+  {
+    "sigla": "LET007",
+    "nome": "LIBRAS",
+    "ch": 3,
+    "periodo": 2,
+    "obrigatorio": false,
+    "requisitos": []
+  }
+]

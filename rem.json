@@ -1,0 +1,50 @@
+[
+  {
+    "sigla": "CIC111",
+    "nome": "Análise e Projeto de Algoritmos II",
+    "ch": 3,
+    "periodo": 5,
+    "obrigatorio": true,
+    "disc": "cco"
+  },
+  {
+    "sigla": "SIN413",
+    "nome": "Inteligência de Negócio",
+    "ch": 4,
+    "periodo": 9,
+    "obrigatorio": true,
+    "disc": "sin"
+  },
+  {
+    "sigla": "SIN414",
+    "nome": "Auditoria e Segurança de Sistemas",
+    "ch": 4,
+    "periodo": 9,
+    "obrigatorio": true,
+    "disc": "sin"
+  },
+  {
+    "sigla": "CIC133",
+    "nome": "Paradigmas de Programação",
+    "ch": 4,
+    "periodo": 3,
+    "obrigatorio": true,
+    "disc": "cco"
+  },
+  {
+    "sigla": "CIC270",
+    "nome": "Computação Gráfica",
+    "ch": 3,
+    "periodo": 6,
+    "obrigatorio": true,
+    "disc": "cco"
+  },
+  {
+    "sigla": "SIN313",
+    "nome": "Organização e Métodos",
+    "ch": 3,
+    "periodo": 7,
+    "obrigatorio": true,
+    "disc": "sin"
+  }
+]
