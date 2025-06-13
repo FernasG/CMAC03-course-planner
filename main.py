@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
+from collections import defaultdict, deque
 from networkx.drawing.nx_agraph import graphviz_layout
 from typing import Literal
 
@@ -32,6 +33,33 @@ def json_to_adjacency_matrix(json: dict):
     return matrix
 
 
+def topological_sorting(graph: dict):
+    in_degree = defaultdict(int)
+
+    for prereqs in graph.values():
+        for pr in prereqs:
+            in_degree[pr] += 0
+
+    for discipline, prereqs in graph.items():
+        in_degree[discipline] += len(prereqs)
+
+    queue = deque([m for m in graph if in_degree[m] == 0])
+    ordered = []
+    
+    while queue:
+        current = queue.popleft()
+        ordered.append(current)
+        
+        for neighbor, prereqs in graph.items():
+            if current in prereqs:
+                in_degree[neighbor] -= 1
+
+                if in_degree[neighbor] == 0:
+                    queue.append(neighbor)
+
+    return ordered
+
+
 def generate_graph_view(matrix: dict, view_mode: Literal["view", "img"]):
     G = nx.DiGraph()
 
@@ -44,7 +72,7 @@ def generate_graph_view(matrix: dict, view_mode: Literal["view", "img"]):
     plt.figure(figsize=(18, 14))
 
     # pos = nx.spring_layout(G, k=0.5, iterations=100)
-    pos = graphviz_layout(G, prog="dot", args="-Grankdir=LR")  # LR = Left to Right
+    pos = graphviz_layout(G, prog="dot", args="-Grankdir=LR")
     
     nx.draw_networkx_nodes(G, pos, node_color="lightblue", node_size=800)
     nx.draw_networkx_edges(G, pos, arrowstyle="->", arrows=True, arrowsize=12, min_source_margin=15, min_target_margin=15, edge_color="gray")
@@ -63,6 +91,8 @@ def generate_graph_view(matrix: dict, view_mode: Literal["view", "img"]):
 if __name__ == "__main__":
     data = read_file("disc-sin.json")
     matrix = json_to_adjacency_matrix(data)
-    generate_graph_view(matrix, "view")
+    ordered = topological_sorting(matrix)
 
-    print(matrix)
+    # generate_graph_view(matrix, "view")
+
+    print(ordered)
