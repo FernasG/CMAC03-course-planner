@@ -38,7 +38,7 @@
     "periodo": 3,
     "obrigatorio": true,
     "requisitos": [
-      "XDES01-COM111-ECOP11A"
+      "XDES01"
     ]
   },
   {
@@ -56,7 +56,7 @@
     "periodo": 3,
     "obrigatorio": true,
     "requisitos": [
-      "CTCO01-STCO01-COM111"
+      "CTCO01"
     ]
   },
   {
@@ -66,7 +66,7 @@
     "periodo": 3,
     "obrigatorio": true,
     "requisitos": [
-      "CTCO01-STCO01",
+      "CTCO01",
       "CRSC04"
     ]
   },
@@ -77,7 +77,7 @@
     "periodo": 3,
     "obrigatorio": true,
     "requisitos": [
-      "CTCO01-STCO01-COM111"
+      "CTCO01"
     ]
   },
   {
@@ -88,8 +88,8 @@
     "obrigatorio": true,
     "requisitos": [
       "MAT00A",
-      "STCO01-CTCO01-ECOP02A",
-      "XMAC01-ECOM01A"
+      "CTCO01",
+      "XMAC01"
     ]
   },
   {
@@ -99,7 +99,7 @@
     "periodo": 5,
     "obrigatorio": true,
     "requisitos": [
-      "CDES05-CTCO04-CIC110-CIC131-ECOM03A"
+      "CDES05-CTCO04"
     ]
   },
   {
@@ -109,7 +109,7 @@
     "periodo": 5,
     "obrigatorio": true,
     "requisitos": [
-      "XDES02-COM220"
+      "XDES02"
     ]
   },
   {
@@ -119,7 +119,7 @@
     "periodo": 5,
     "obrigatorio": true,
     "requisitos": [
-      "STCO02-CTCO02-COM112-ECOT02A-ECOT12A"
+      "CTCO02"
     ]
   },
   {
@@ -140,7 +140,7 @@
     "obrigatorio": true,
     "requisitos": [
       "XMAC02",
-      "XDES02-ECOP13A"
+      "XDES02"
     ]
   },
   {
@@ -152,7 +152,7 @@
     "requisitos": [
       "XRSC01",
       "XDES04",
-      "IEPG21-ADM08H-ADM51H-ADM52H-ADM54H-ADM58H-LET007"
+      "IEPG21-ADM51H-ADM54H"
     ]
   },
   {
@@ -161,7 +161,7 @@
     "ch": 4,
     "periodo": 7,
     "obrigatorio": true,
-    "requisitos": ["XRSC01", "CTCO04-ADM51E"]
+    "requisitos": ["XRSC01", "CTCO04"]
   },
   {
     "sigla": "CTCO01",
@@ -169,7 +169,7 @@
     "ch": 4,
     "periodo": 2,
     "obrigatorio": true,
-    "requisitos": ["XDES01-COM110"]
+    "requisitos": ["XDES01"]
   },
   {
     "sigla": "CRSC04",
@@ -177,7 +177,7 @@
     "ch": 4,
     "periodo": 2,
     "obrigatorio": true,
-    "requisitos": ["CRSC03-CIC120"]
+    "requisitos": ["CRSC03"]
   },
   {
     "sigla": "CMAC04",
@@ -193,7 +193,7 @@
     "ch": 4,
     "periodo": 4,
     "obrigatorio": true,
-    "requisitos": ["XDES02-COM220-ECOP13A-ECOT03A"]
+    "requisitos": ["XDES02"]
   },
   {
     "sigla": "CTCO04",
@@ -201,7 +201,7 @@
     "ch": 4,
     "periodo": 4,
     "obrigatorio": true,
-    "requisitos": ["CTCO02-COM112"]
+    "requisitos": ["CTCO02"]
   },
   {
     "sigla": "XRSC01",
@@ -209,7 +209,7 @@
     "ch": 4,
     "periodo": 4,
     "obrigatorio": true,
-    "requisitos": ["SRSC02-CRSC02-COM120-ECOS01A-ECOS11A"]
+    "requisitos": ["CRSC02"]
   },
   {
     "sigla": "CDES05",
@@ -217,7 +217,7 @@
     "ch": 4,
     "periodo": 4,
     "obrigatorio": true,
-    "requisitos": ["XMAC01-MAT015-MAT017-MAT057-ECOM01A"]
+    "requisitos": ["XMAC01"]
   },
   {
     "sigla": "CRSC05",
@@ -225,7 +225,7 @@
     "ch": 4,
     "periodo": 4,
     "obrigatorio": true,
-    "requisitos": ["SRSC02-CRSC02-COM120"]
+    "requisitos": ["CRSC02"]
   },
   {
     "sigla": "CMAC05",
@@ -233,7 +233,7 @@
     "ch": 4,
     "periodo": 4,
     "obrigatorio": true,
-    "requisitos": ["MAT00B-MAT002"]
+    "requisitos": ["MATO0B"]
   },
   {
     "sigla": "CTCO06",
@@ -241,7 +241,7 @@
     "ch": 4,
     "periodo": 6,
     "obrigatorio": true,
-    "requisitos": ["CTCO05-CIC132-ECOM05A"]
+    "requisitos": ["CTCO05"]
   },
   {
     "sigla": "XAHC02",
@@ -249,7 +249,7 @@
     "ch": 4,
     "periodo": 6,
     "obrigatorio": true,
-    "requisitos": ["XDES03-XDES04-COM210-COM222-ECOX05"]
+    "requisitos": ["XDES03-XDES04"]
   },
   {
     "sigla": "MATO0A",
