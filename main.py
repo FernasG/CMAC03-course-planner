@@ -1,21 +1,19 @@
 import json
-import numpy as np
-import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
 from collections import defaultdict, deque
 from networkx.drawing.nx_agraph import graphviz_layout
-from typing import Literal
+from typing import Literal, Union
 
 
-def read_file(file: str):
+def read_file(file: str) -> Union[dict, list]:
     with open(file, "r") as file:
         data = json.load(file)
 
         return data
 
 
-def json_to_adjacency_matrix(json: dict):
+def json_to_adjacency_matrix(json: dict) -> dict:
     matrix = {}
 
     for item in json:
@@ -33,7 +31,7 @@ def json_to_adjacency_matrix(json: dict):
     return matrix
 
 
-def topological_sorting(graph: dict):
+def topological_sorting(graph: dict) -> list:
     in_degree = defaultdict(int)
 
     for prereqs in graph.values():
@@ -60,7 +58,16 @@ def topological_sorting(graph: dict):
     return ordered
 
 
-def generate_graph_view(matrix: dict, view_mode: Literal["view", "img"]):
+def get_recommended_courses(top_order: list, student: dict) -> list:
+    ch_optatives = student.get("ch_optativas_pendentes")
+    disciplines = student.get("disciplinas_pendentes")
+    period = student.get("periodo")
+    
+    print(top_order, ch_optatives, disciplines, period)
+    
+
+
+def generate_graph_view(matrix: dict, view_mode: Literal["view", "img"]) -> None:
     G = nx.DiGraph()
 
     for discipline, prereqs in matrix.items():
@@ -89,10 +96,17 @@ def generate_graph_view(matrix: dict, view_mode: Literal["view", "img"]):
 
 
 if __name__ == "__main__":
-    data = read_file("disc-sin.json")
+    students = read_file("students.json")
+    student = students[0]
+    course = student.get("curso")
+
+
+    data = read_file(f"disc-{course}.json")
+
+    # limpa materias feitas, limpa materia periodo par/impar
+
     matrix = json_to_adjacency_matrix(data)
-    ordered = topological_sorting(matrix)
-
-    # generate_graph_view(matrix, "view")
-
-    print(ordered)
+    top_order = topological_sorting(matrix)
+    
+    print(matrix)
+    recommendation = get_recommended_courses(top_order, student)
