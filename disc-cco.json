@@ -233,7 +233,7 @@
     "ch": 4,
     "periodo": 4,
     "obrigatorio": true,
-    "requisitos": ["MATO0B"]
+    "requisitos": ["MAT00B"]
   },
   {
     "sigla": "CTCO06",
@@ -252,7 +252,7 @@
     "requisitos": ["XDES03-XDES04"]
   },
   {
-    "sigla": "MATO0A",
+    "sigla": "MAT00A",
     "nome": "Cálculo A",
     "ch": 4,
     "periodo": 1,
@@ -260,12 +260,12 @@
     "requisitos": []
   },
   {
-    "sigla": "MATO0B",
+    "sigla": "MAT00B",
     "nome": "Cálculo B",
     "ch": 4,
     "periodo": 2,
     "obrigatorio": true,
-    "requisitos": ["MATO0A"]
+    "requisitos": ["MAT00A"]
   },
   {
     "sigla": "ADM51H",

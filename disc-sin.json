@@ -175,7 +175,7 @@
     "periodo": 4,
     "obrigatorio": true,
     "requisitos": [
-      "MATO0A",
+      "MAT00A",
       "XMAC01",
       "STCO01"
     ]
@@ -254,7 +254,7 @@
     ]
   },
   {
-    "sigla": "MATO0A",
+    "sigla": "MAT00A",
     "nome": "Cálculo A",
     "ch": 4,
     "periodo": 1,

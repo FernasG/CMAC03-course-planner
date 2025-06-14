@@ -31,29 +31,56 @@ def json_to_adjacency_matrix(json: dict) -> dict:
     return matrix
 
 
-def topological_sorting(graph: dict) -> list:
+def topological_sorting(disciplines: dict, pending: list, period: int) -> list:
+    graph = defaultdict(list)
     in_degree = defaultdict(int)
+    period_map = {}
 
-    for prereqs in graph.values():
-        for pr in prereqs:
-            in_degree[pr] += 0
+    pending = set(pending)
 
-    for discipline, prereqs in graph.items():
-        in_degree[discipline] += len(prereqs)
+    for code in pending:
+        if code not in disciplines.keys():
+            continue
 
-    queue = deque([m for m in graph if in_degree[m] == 0])
+        disc_period = disciplines[code]["periodo"]
+        prereqs = disciplines[code]["requisitos"]
+
+        period_map[code] = disc_period
+
+        for prereq in prereqs:
+            if prereq not in pending:
+                continue
+
+            graph[prereq].append(code)
+            in_degree[code] += 1
+
+    queue = []
+
+    for code in pending:
+        if code not in disciplines.keys():
+            continue
+
+        if in_degree[code] == 0:
+            delay = max(0, int(period) - int(period_map[code]))
+            queue.append((delay, code))
+
+    queue.sort(reverse=True)
+    queue = deque(queue)
+
     ordered = []
     
     while queue:
-        current = queue.popleft()
+        _, current = queue.popleft()
         ordered.append(current)
         
-        for neighbor, prereqs in graph.items():
-            if current in prereqs:
-                in_degree[neighbor] -= 1
+        for neighbor in graph[current]:
+            in_degree[neighbor] -= 1
 
-                if in_degree[neighbor] == 0:
-                    queue.append(neighbor)
+            if in_degree[neighbor] == 0:
+                delay = max(0, int(period), int(period_map[neighbor]))
+                queue.append((delay, neighbor))
+
+        queue = deque(sorted(queue, reverse=True))
 
     return ordered
 
@@ -98,15 +125,16 @@ def generate_graph_view(matrix: dict, view_mode: Literal["view", "img"]) -> None
 if __name__ == "__main__":
     students = read_file("students.json")
     student = students[0]
-    course = student.get("curso")
 
+    course = student["curso"]
+    period = student["periodo"]
+    pending = student["disciplinas_pendentes"]
 
     data = read_file(f"disc-{course}.json")
+    disciplines = {disc["sigla"]: disc for disc in data}
 
-    # limpa materias feitas, limpa materia periodo par/impar
+    top_order = topological_sorting(disciplines, pending, period)
 
-    matrix = json_to_adjacency_matrix(data)
-    top_order = topological_sorting(matrix)
-    
-    print(matrix)
-    recommendation = get_recommended_courses(top_order, student)
+
+    print(top_order)
+
