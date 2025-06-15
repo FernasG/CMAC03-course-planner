@@ -5,7 +5,11 @@
     "ch": 4,
     "periodo": 1,
     "obrigatorio": true,
-    "requisitos": []
+    "requisitos": [],
+    "horarios": [
+      "3N12",
+      "5N34"
+    ]
   },
   {
     "sigla": "SAHC04",
@@ -13,7 +17,10 @@
     "ch": 2,
     "periodo": 1,
     "obrigatorio": true,
-    "requisitos": []
+    "requisitos": [],
+    "horarios": [
+      "6N12"
+    ]
   },
   {
     "sigla": "SAHC05",
@@ -21,7 +28,11 @@
     "ch": 4,
     "periodo": 1,
     "obrigatorio": true,
-    "requisitos": []
+    "requisitos": [],
+    "horarios": [
+      "2N34",
+      "5N12"
+    ]
   },
   {
     "sigla": "XDES03",
@@ -31,6 +42,10 @@
     "obrigatorio": true,
     "requisitos": [
       "XDES02"
+    ],
+    "horarios": [
+      "3N12",
+      "5N34"
     ]
   },
   {
@@ -41,6 +56,10 @@
     "obrigatorio": true,
     "requisitos": [
       "XDES04"
+    ],
+    "horarios": [
+      "4N12",
+      "6N34"
     ]
   },
   {
@@ -51,6 +70,10 @@
     "obrigatorio": true,
     "requisitos": [
       "STCO01"
+    ],
+    "horarios": [
+      "2N12",
+      "6N12"
     ]
   },
   {
@@ -59,7 +82,11 @@
     "ch": 4,
     "periodo": 3,
     "obrigatorio": true,
-    "requisitos": []
+    "requisitos": [],
+    "horarios": [
+      "3N34",
+      "5N12"
+    ]
   },
   {
     "sigla": "SPAD02",
@@ -69,6 +96,10 @@
     "obrigatorio": true,
     "requisitos": [
       "XPAD01"
+    ],
+    "horarios": [
+      "2N34",
+      "4N12"
     ]
   },
   {
@@ -80,6 +111,9 @@
     "requisitos": [
       "XMAC02",
       "XPAD01"
+    ],
+    "horarios": [
+      "5N1234"
     ]
   },
   {
@@ -90,6 +124,10 @@
     "obrigatorio": true,
     "requisitos": [
       "SRSC02"
+    ],
+    "horarios": [
+      "3N34",
+      "6N12"
     ]
   },
   {
@@ -100,6 +138,10 @@
     "obrigatorio": true,
     "requisitos": [
       "XDES04-XPAD01-XDES03"
+    ],
+    "horarios": [
+      "2N12",
+      "4N12"
     ]
   },
   {
@@ -110,6 +152,10 @@
     "obrigatorio": true,
     "requisitos": [
       "XDES03-XDES04"
+    ],
+    "horarios": [
+      "2N34",
+      "5N12"
     ]
   },
   {
@@ -120,6 +166,10 @@
     "obrigatorio": true,
     "requisitos": [
       "IEPG22"
+    ],
+    "horarios": [
+      "3N12",
+      "4N34"
     ]
   },
   {
@@ -130,6 +180,10 @@
     "obrigatorio": true,
     "requisitos": [
       "XDES01"
+    ],
+    "horarios": [
+      "4N34",
+      "6N12"
     ]
   },
   {
@@ -138,7 +192,11 @@
     "ch": 4,
     "periodo": 2,
     "obrigatorio": true,
-    "requisitos": []
+    "requisitos": [],
+    "horarios": [
+      "2N12",
+      "5N34"
+    ]
   },
   {
     "sigla": "STCO01",
@@ -148,6 +206,10 @@
     "obrigatorio": true,
     "requisitos": [
       "XDES01"
+    ],
+    "horarios": [
+      "3N34",
+      "5N12"
     ]
   },
   {
@@ -156,7 +218,11 @@
     "ch": 4,
     "periodo": 2,
     "obrigatorio": true,
-    "requisitos": []
+    "requisitos": [],
+    "horarios": [
+      "2N34",
+      "4N12"
+    ]
   },
   {
     "sigla": "XPAD01",
@@ -166,6 +232,10 @@
     "obrigatorio": true,
     "requisitos": [
       "STCO02"
+    ],
+    "horarios": [
+      "2N12",
+      "5N12"
     ]
   },
   {
@@ -178,6 +248,10 @@
       "MAT00A",
       "XMAC01",
       "STCO01"
+    ],
+    "horarios": [
+      "3N34",
+      "4N12"
     ]
   },
   {
@@ -188,6 +262,10 @@
     "obrigatorio": true,
     "requisitos": [
       "STCO01"
+    ],
+    "horarios": [
+      "3N12",
+      "5N34"
     ]
   },
   {
@@ -198,6 +276,10 @@
     "obrigatorio": true,
     "requisitos": [
       "STCO01-SRSC03"
+    ],
+    "horarios": [
+      "4N34",
+      "6N12"
     ]
   },
   {
@@ -208,6 +290,10 @@
     "obrigatorio": true,
     "requisitos": [
       "XDES04"
+    ],
+    "horarios": [
+      "2N34",
+      "5N12"
     ]
   },
   {
@@ -218,6 +304,9 @@
     "obrigatorio": true,
     "requisitos": [
       "XMAC02"
+    ],
+    "horarios": [
+      "3N1234"
     ]
   },
   {
@@ -228,6 +317,10 @@
     "obrigatorio": true,
     "requisitos": [
       "XDES04-XPAD01-XDES03"
+    ],
+    "horarios": [
+      "2N12",
+      "6N12"
     ]
   },
   {
@@ -240,6 +333,9 @@
       "XRSC01",
       "XDES04",
       "IEPG21-ADM51H"
+    ],
+    "horarios": [
+      "4N1234"
     ]
   },
   {
@@ -251,6 +347,9 @@
     "requisitos": [
       "XRSC01",
       "ADM51E"
+    ],
+    "horarios": [
+      "5N1234"
     ]
   },
   {
@@ -259,7 +358,11 @@
     "ch": 4,
     "periodo": 1,
     "obrigatorio": true,
-    "requisitos": []
+    "requisitos": [],
+    "horarios": [
+      "2N12",
+      "4N34"
+    ]
   },
   {
     "sigla": "IEPG01",
@@ -267,7 +370,10 @@
     "ch": 3,
     "periodo": 1,
     "obrigatorio": true,
-    "requisitos": []
+    "requisitos": [],
+    "horarios": [
+      "3N345"
+    ]
   },
   {
     "sigla": "IEPG22",
@@ -275,7 +381,10 @@
     "ch": 2,
     "periodo": 1,
     "obrigatorio": true,
-    "requisitos": []
+    "requisitos": [],
+    "horarios": [
+      "4N12"
+    ]
   },
   {
     "sigla": "IEPG20",
@@ -283,7 +392,10 @@
     "ch": 3,
     "periodo": 3,
     "obrigatorio": true,
-    "requisitos": []
+    "requisitos": [],
+    "horarios": [
+      "4N345"
+    ]
   },
   {
     "sigla": "ADM51E",
@@ -291,7 +403,10 @@
     "ch": 3,
     "periodo": 5,
     "obrigatorio": true,
-    "requisitos": []
+    "requisitos": [],
+    "horarios": [
+      "2N12"
+    ]
   },
   {
     "sigla": "IEPG04",
@@ -299,7 +414,10 @@
     "ch": 2,
     "periodo": 2,
     "obrigatorio": true,
-    "requisitos": []
+    "requisitos": [],
+    "horarios": [
+      "3N12"
+    ]
   },
   {
     "sigla": "IEPG14",
@@ -307,7 +425,10 @@
     "ch": 2,
     "periodo": 4,
     "obrigatorio": true,
-    "requisitos": []
+    "requisitos": [],
+    "horarios": [
+      "2N34"
+    ]
   },
   {
     "sigla": "IEPG10",
@@ -315,7 +436,10 @@
     "ch": 3,
     "periodo": 6,
     "obrigatorio": true,
-    "requisitos": []
+    "requisitos": [],
+    "horarios": [
+      "4N12"
+    ]
   },
   {
     "sigla": "ADM51H",
@@ -323,7 +447,10 @@
     "ch": 3,
     "periodo": 5,
     "obrigatorio": false,
-    "requisitos": []
+    "requisitos": [],
+    "horarios": [
+      "4T345"
+    ]
   },
   {
     "sigla": "IEPG21",
@@ -331,6 +458,9 @@
     "ch": 3,
     "periodo": 5,
     "obrigatorio": false,
-    "requisitos": []
+    "requisitos": [],
+    "horarios": [
+      "3T345"
+    ]
   }
 ]

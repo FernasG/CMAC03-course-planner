@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from collections import defaultdict, deque
 from networkx.drawing.nx_agraph import graphviz_layout
 from typing import Literal, Union
+from tabulate import tabulate
 
 
 def read_file(file: str) -> Union[dict, list]:
@@ -61,7 +62,7 @@ def topological_sorting(disciplines: dict, pending: list, period: int) -> list:
             continue
 
         if in_degree[code] == 0:
-            delay = max(0, int(period) - int(period_map[code]))
+            delay = max(0, period - period_map[code])
             queue.append((delay, code))
 
     queue.sort(reverse=True)
@@ -77,22 +78,67 @@ def topological_sorting(disciplines: dict, pending: list, period: int) -> list:
             in_degree[neighbor] -= 1
 
             if in_degree[neighbor] == 0:
-                delay = max(0, int(period), int(period_map[neighbor]))
+                delay = max(0, period, period_map[neighbor])
                 queue.append((delay, neighbor))
 
         queue = deque(sorted(queue, reverse=True))
 
     return ordered
 
+def get_elective_disciplines(data: list):
+    elective = read_file("disc-opt.json")
+    data = [disc for disc in data if not disc["obrigatorio"]]
+    data.extend(elective)
 
-def get_recommended_courses(top_order: list, student: dict) -> list:
-    ch_optatives = student.get("ch_optativas_pendentes")
-    disciplines = student.get("disciplinas_pendentes")
+    return data
+
+
+def get_recommended_courses(disciplines: dict, top_order: list, student: dict) -> list:
+    pending = student.get("disciplinas_pendentes")
     period = student.get("periodo")
-    
-    print(top_order, ch_optatives, disciplines, period)
-    
 
+    recommendations = []
+
+    for code in top_order:
+        discipline = disciplines.get(code)
+
+        if not discipline:
+            continue
+
+        disc_period = discipline["periodo"]
+        disc_mandatory = discipline["obrigatorio"]
+
+        if period % 2 != disc_period % 2:
+            continue
+
+        disc_prereqs = discipline["requisitos"]
+        
+        skip_discipline = False
+
+        for prereq in disc_prereqs:
+            for disc in pending:
+                skip_discipline = disc in prereq
+                
+                if skip_discipline:
+                    break
+
+        if skip_discipline:
+            continue
+
+        if disc_mandatory and disc_period <= period:
+            item = {
+                "sigla": code,
+                "periodo": disc_period,
+                "obrigatario": disc_mandatory,
+                "ch": discipline["ch"],
+                "prioridade": "HIGH"
+            }
+
+            recommendations.append(item)
+
+
+    return recommendations
+    
 
 def generate_graph_view(matrix: dict, view_mode: Literal["view", "img"]) -> None:
     G = nx.DiGraph()
@@ -122,6 +168,47 @@ def generate_graph_view(matrix: dict, view_mode: Literal["view", "img"]) -> None
         plt.savefig("graph.png", format="png", dpi=300)
 
 
+def show_recommendations(recommendations: list):
+    headers = ["SIGLA", "PERIODO", "OBRIGATORIO", "CARGA HORARIA", "PRIORIDADE"]
+    table = []
+
+    for item in recommendations:
+        workload = f"{item["ch"] * 16}h"
+        mandatory = "Sim" if item["obrigatario"] else "Não"
+        priority = "Alta" if item["prioridade"] else "Baixa"
+
+        row = [
+            item["sigla"],
+            item["periodo"],
+            mandatory,
+            workload,
+            priority
+        ]
+
+        table.append(row)
+
+
+    print(tabulate(table, headers=headers, tablefmt="grid"))
+
+
+def display_schedule_table():
+    matrix = [[False for _ in range(5)] for _ in range(15)]
+    headers = ["Horário", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira"]
+    timetables = [
+        "07:00", "07:55", "08:50", "10:10", "11:05",
+        "13:30", "14:25", "15:45", "16:40", "17:35",
+        "19:00", "19:50", "21:00", "21:50", "22:40"
+    ]
+    table = []
+
+    for time, data in zip(timetables, matrix):
+        row = [time, *data]
+
+        table.append(row)
+
+    print(tabulate(table, headers=headers, tablefmt="grid"))
+
+
 if __name__ == "__main__":
     students = read_file("students.json")
     student = students[0]
@@ -134,7 +221,8 @@ if __name__ == "__main__":
     disciplines = {disc["sigla"]: disc for disc in data}
 
     top_order = topological_sorting(disciplines, pending, period)
+    electives = get_elective_disciplines(data)
+    recommendations = get_recommended_courses(disciplines, top_order, student)
 
-
-    print(top_order)
+    show_recommendations(recommendations)
 
