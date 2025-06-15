@@ -4,132 +4,168 @@
     "nome": "Metaheurísticas",
     "ch": 4,
     "periodo": 0,
-    "obrigatorio": false
+    "obrigatorio": false,
+    "horarios": []
   },
   {
     "sigla": "XRSC07",
     "nome": "Computação em Nuvem",
     "ch": 4,
     "periodo": 0,
-    "obrigatorio": false
+    "obrigatorio": false,
+    "horarios": [
+      "5N1234"
+    ]
   },
   {
     "sigla": "SADG02",
     "nome": "Economia da Informação",
     "ch": 4,
     "periodo": 0,
-    "obrigatorio": false
+    "obrigatorio": false,
+    "horarios": [
+      "4N12",
+      "6N12"
+    ]
   },
   {
     "sigla": "XRSC09",
     "nome": "Sistemas Distribuídos",
     "ch": 4,
     "periodo": 0,
-    "obrigatorio": false
+    "obrigatorio": false,
+    "horarios": [
+      "3T12",
+      "5M45"
+    ]
   },
   {
     "sigla": "XDES16",
     "nome": "Fundamentos de Game Design",
     "ch": 4,
     "periodo": 0,
-    "obrigatorio": false
+    "obrigatorio": false,
+    "horarios": []
   },
   {
     "sigla": "XRSC08",
     "nome": "Programação Paralela",
     "ch": 4,
     "periodo": 0,
-    "obrigatorio": false
+    "obrigatorio": false,
+    "horarios": []
   },
   {
     "sigla": "CMCO07",
     "nome": "Visão Computacional",
     "ch": 4,
     "periodo": 0,
-    "obrigatorio": false
+    "obrigatorio": false,
+    "horarios": []
   },
   {
     "sigla": "XDES14",
     "nome": "Desenvolvimento para Dispositivos Móveis",
     "ch": 4,
     "periodo": 0,
-    "obrigatorio": false
+    "obrigatorio": false,
+    "horarios": []
   },
   {
     "sigla": "XPAD09",
     "nome": "Análise e Previsão de Séries Temporais",
     "ch": 4,
     "periodo": 0,
-    "obrigatorio": false
+    "obrigatorio": false,
+    "horarios": [
+      "3N12",
+      "4N34"
+    ]
   },
   {
     "sigla": "ECOX22",
     "nome": "Maratona de Programação II",
     "ch": 3,
     "periodo": 0,
-    "obrigatorio": false
+    "obrigatorio": false,
+    "horarios": []
   },
   {
     "sigla": "XMCO09",
     "nome": "Ciência de Redes",
     "ch": 4,
     "periodo": -1,
-    "obrigatorio": false
+    "obrigatorio": false,
+    "horarios": []
   },
   {
     "sigla": "XDES11",
     "nome": "Tópicos em Desenvolvimento e Engenharia de Software (PEGA)",
     "ch": 4,
     "periodo": -1,
-    "obrigatorio": false
+    "obrigatorio": false,
+    "horarios": [
+      "2N12",
+      "5N34"
+    ]
   },
   {
     "sigla": "CMCO06",
     "nome": "Modelagem Geométrica e Visual",
     "ch": 4,
     "periodo": -1,
-    "obrigatorio": false
+    "obrigatorio": false,
+    "horarios": []
   },
   {
     "sigla": "XDES08",
     "nome": "Arquitetura de Software",
     "ch": 4,
     "periodo": -1,
-    "obrigatorio": false
+    "obrigatorio": false,
+    "horarios": []
   },
   {
     "sigla": "XMCO08",
     "nome": "Teoria dos Jogos",
     "ch": 4,
     "periodo": -1,
-    "obrigatorio": false
+    "obrigatorio": false,
+    "horarios": []
   },
   {
     "sigla": "SPAD05",
     "nome": "Análise de Dados Geoespaciais",
     "ch": 4,
     "periodo": -1,
-    "obrigatorio": false
+    "obrigatorio": false,
+    "horarios": []
   },
   {
     "sigla": "ECOX21",
     "nome": "Maratona de Programação I",
     "ch": 3,
     "periodo": -1,
-    "obrigatorio": false
+    "obrigatorio": false,
+    "horarios": []
   },
   {
     "sigla": "XAHC07",
     "nome": "Computação Aplicada à Educação",
     "ch": 4,
     "periodo": -1,
-    "obrigatorio": false
+    "obrigatorio": false,
+    "horarios": []
   },
   {
     "sigla": "CDES13",
     "nome": "Desenvolvimento de Jogos",
     "ch": 4,
     "periodo": -1,
-    "obrigatorio": false
+    "obrigatorio": false,
+    "horarios": [
+      "3T45",
+      "5T12"
+    ]
   }
 ]

@@ -1,8 +1,8 @@
 [
   {
     "curso": "cco",
-    "periodo": "5",
-    "ch_optativas_pendentes": "512",
+    "periodo": 5,
+    "ch_optativas_pendentes": 512,
     "disciplinas_pendentes": [
       "CRSC03",
       "MAT00A",
@@ -33,8 +33,8 @@
   },
   {
     "curso": "cco",
-    "periodo": "6",
-    "ch_optativas_pendentes": "608",
+    "periodo": 6,
+    "ch_optativas_pendentes": 608,
     "disciplinas_pendentes": [
       "MAT00B",
       "CTCO04",
@@ -54,8 +54,8 @@
   },
   {
     "curso": "cco",
-    "periodo": "2",
-    "ch_optativas_pendentes": "672",
+    "periodo": 2,
+    "ch_optativas_pendentes": 672,
     "disciplinas_pendentes": [
       "MAT00B",
       "CRSC04",
@@ -89,8 +89,8 @@
   },
   {
     "curso": "cco",
-    "periodo": "6",
-    "ch_optativas_pendentes": "464",
+    "periodo": 6,
+    "ch_optativas_pendentes": 464,
     "disciplinas_pendentes": [
       "CRSC03",
       "CRSC04",
@@ -118,8 +118,8 @@
   },
   {
     "curso": "cco",
-    "periodo": "4",
-    "ch_optativas_pendentes": "560",
+    "periodo": 4,
+    "ch_optativas_pendentes": 560,
     "disciplinas_pendentes": [
       "CRSC04",
       "CTCO01",
@@ -151,8 +151,8 @@
   },
   {
     "curso": "sin",
-    "periodo": "5",
-    "ch_optativas_pendentes": "608",
+    "periodo": 5,
+    "ch_optativas_pendentes": 608,
     "disciplinas_pendentes": [
       "SRSC03",
       "XMAC02",
@@ -179,8 +179,8 @@
   },
   {
     "curso": "sin",
-    "periodo": "5",
-    "ch_optativas_pendentes": "576",
+    "periodo": 5,
+    "ch_optativas_pendentes": 576,
     "disciplinas_pendentes": [
       "MAT00A",
       "SRSC03",
@@ -209,8 +209,8 @@
   },
   {
     "curso": "sin",
-    "periodo": "6",
-    "ch_optativas_pendentes": "512",
+    "periodo": 6,
+    "ch_optativas_pendentes": 512,
     "disciplinas_pendentes": [
       "MAT00A",
       "SMAC03",
@@ -233,8 +233,8 @@
   },
   {
     "curso": "sin",
-    "periodo": "4",
-    "ch_optativas_pendentes": "608",
+    "periodo": 4,
+    "ch_optativas_pendentes": 608,
     "disciplinas_pendentes": [
       "MAT00A",
       "XMAC01",
@@ -266,8 +266,8 @@
   },
   {
     "curso": "sin",
-    "periodo": "4",
-    "ch_optativas_pendentes": "608",
+    "periodo": 4,
+    "ch_optativas_pendentes": 608,
     "disciplinas_pendentes": [
       "XMAC02",
       "SMAC03",
