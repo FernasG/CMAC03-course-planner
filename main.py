@@ -6,6 +6,12 @@ from networkx.drawing.nx_agraph import graphviz_layout
 from typing import Literal, Union
 from tabulate import tabulate
 
+time_period_range = {
+    "M": (0, 5),
+    "T": (5, 10),
+    "N": (10, 14)
+}
+
 
 def read_file(file: str) -> Union[dict, list]:
     with open(file, "r") as file:
@@ -85,6 +91,7 @@ def topological_sorting(disciplines: dict, pending: list, period: int) -> list:
 
     return ordered
 
+
 def get_elective_disciplines(data: list):
     elective = read_file("disc-opt.json")
     data = [disc for disc in data if not disc["obrigatorio"]]
@@ -92,12 +99,47 @@ def get_elective_disciplines(data: list):
 
     return data
 
+def check_schedule_conflict(grid: list, discipline_timestamp: list):
+    has_conflict = False
 
-def get_recommended_courses(disciplines: dict, top_order: list, student: dict) -> list:
+    for timestamp in discipline_timestamp:
+        day = timestamp[0]
+        period = timestamp[1]
+        timetables = list(timestamp[2:])
+
+        (start, end) = time_period_range[period]
+        grid_period = grid[start:end]
+
+        day_index = int(day) - 2
+
+        if any(grid_period[int(time) - 1][day_index] for time in timetables):
+            has_conflict = True
+        
+            break
+
+    return has_conflict
+
+def add_schedule_entry(grid: list, code: str, discipline_timestamp: list):
+    for timestamp in discipline_timestamp:
+        day = timestamp[0]
+        period = timestamp[1]
+        timetables = list(timestamp[2:])
+
+        (start, end) = time_period_range[period]
+        grid_period = grid[start:end]
+
+        day_index = int(day) - 2
+
+        for time in timetables:
+            grid_period[int(time) - 1][day_index] = code
+
+
+def get_recommended_courses(disciplines: dict, top_order: list, student: dict) -> tuple:
     pending = student.get("disciplinas_pendentes")
     period = student.get("periodo")
 
     recommendations = []
+    grid_matrix = [[False for _ in range(5)] for _ in range(15)]
 
     for code in top_order:
         discipline = disciplines.get(code)
@@ -125,19 +167,28 @@ def get_recommended_courses(disciplines: dict, top_order: list, student: dict) -
         if skip_discipline:
             continue
 
-        if disc_mandatory and disc_period <= period:
-            item = {
-                "sigla": code,
-                "periodo": disc_period,
-                "obrigatario": disc_mandatory,
-                "ch": discipline["ch"],
-                "prioridade": "HIGH"
-            }
+        disc_timestamp = discipline["horarios"]
 
-            recommendations.append(item)
+        has_conflict = check_schedule_conflict(grid_matrix, disc_timestamp)
 
+        if has_conflict:
+            continue
 
-    return recommendations
+        add_schedule_entry(grid_matrix, code, disc_timestamp)
+
+        item = {
+            "sigla": code,
+            "periodo": disc_period,
+            "obrigatario": disc_mandatory,
+            "horarios": disc_timestamp,
+            "ch": discipline["ch"],
+            "prioridade": "HIGH"
+        }
+
+        recommendations.append(item)
+
+    
+    return (recommendations, grid_matrix)
     
 
 def generate_graph_view(matrix: dict, view_mode: Literal["view", "img"]) -> None:
@@ -168,31 +219,32 @@ def generate_graph_view(matrix: dict, view_mode: Literal["view", "img"]) -> None
         plt.savefig("graph.png", format="png", dpi=300)
 
 
-def show_recommendations(recommendations: list):
-    headers = ["SIGLA", "PERIODO", "OBRIGATORIO", "CARGA HORARIA", "PRIORIDADE"]
+def display_recommendations(recommendations: list):
+    headers = ["SIGLA", "PERIODO", "OBRIGATORIO", "CARGA HORARIA", "HORARIOS", "PRIORIDADE"]
     table = []
 
     for item in recommendations:
         workload = f"{item["ch"] * 16}h"
         mandatory = "Sim" if item["obrigatario"] else "Não"
         priority = "Alta" if item["prioridade"] else "Baixa"
+        timestamp = "-".join(item["horarios"])
 
         row = [
             item["sigla"],
             item["periodo"],
             mandatory,
             workload,
+            timestamp,
             priority
         ]
 
         table.append(row)
 
 
-    print(tabulate(table, headers=headers, tablefmt="grid"))
+    print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
 
-def display_schedule_table():
-    matrix = [[False for _ in range(5)] for _ in range(15)]
+def display_schedule_table(grid: list):
     headers = ["Horário", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira"]
     timetables = [
         "07:00", "07:55", "08:50", "10:10", "11:05",
@@ -201,17 +253,26 @@ def display_schedule_table():
     ]
     table = []
 
-    for time, data in zip(timetables, matrix):
-        row = [time, *data]
+    for time, data in zip(timetables, grid):
+        row = [time, *[item if item else "-" for item in data]]
 
         table.append(row)
 
-    print(tabulate(table, headers=headers, tablefmt="grid"))
+    print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
 
 if __name__ == "__main__":
     students = read_file("students.json")
-    student = students[0]
+
+    for index, student in enumerate(students):
+        course = student["curso"]
+        period = student["periodo"]
+        pending = student["disciplinas_pendentes"]
+
+        print("{:02} - Curso: {} - Periodo: {} - Matérias Pendentes: {}".format(index + 1, course.upper(), period, len(pending)))
+
+    option = int(input("Escolha um dataset: "))
+    student = students[option - 1]
 
     course = student["curso"]
     period = student["periodo"]
@@ -219,10 +280,8 @@ if __name__ == "__main__":
 
     data = read_file(f"disc-{course}.json")
     disciplines = {disc["sigla"]: disc for disc in data}
-
     top_order = topological_sorting(disciplines, pending, period)
-    electives = get_elective_disciplines(data)
-    recommendations = get_recommended_courses(disciplines, top_order, student)
+    (recommendations, grid) = get_recommended_courses(disciplines, top_order, student)
 
-    show_recommendations(recommendations)
-
+    display_recommendations(recommendations)
+    display_schedule_table(grid)
