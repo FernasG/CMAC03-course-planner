@@ -3,8 +3,9 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from collections import defaultdict, deque
 from networkx.drawing.nx_agraph import graphviz_layout
-from typing import Literal, Union
+from functools import reduce
 from tabulate import tabulate
+from typing import Literal, Union
 
 time_period_range = {
     "M": (0, 5),
@@ -92,12 +93,13 @@ def topological_sorting(disciplines: dict, pending: list, period: int) -> list:
     return ordered
 
 
-def get_elective_disciplines(data: list):
-    elective = read_file("disc-opt.json")
+def get_optatives_disciplines(data: list):
+    optatives = read_file("disc-opt.json")
     data = [disc for disc in data if not disc["obrigatorio"]]
-    data.extend(elective)
+    data.extend(optatives)
 
     return data
+
 
 def check_schedule_conflict(grid: list, discipline_timestamp: list):
     has_conflict = False
@@ -119,6 +121,7 @@ def check_schedule_conflict(grid: list, discipline_timestamp: list):
 
     return has_conflict
 
+
 def add_schedule_entry(grid: list, code: str, discipline_timestamp: list):
     for timestamp in discipline_timestamp:
         day = timestamp[0]
@@ -134,11 +137,45 @@ def add_schedule_entry(grid: list, code: str, discipline_timestamp: list):
             grid_period[int(time) - 1][day_index] = code
 
 
-def get_recommended_courses(disciplines: dict, top_order: list, student: dict) -> tuple:
+def get_optative_disciplines_for_period(optatives: list, grid: list, period: int, hours_pending: int) -> list:
+    expected_hours = hours_pending / (8 - period)
+    reached_hours = 0
+    max_optatives_per_period = 5
+    optatives_selected = []
+
+    for discipline in optatives:
+        code = discipline["sigla"]
+        disc_timestamp = discipline["horarios"]
+        disc_period = discipline["periodo"]
+        disc_wl = discipline["ch"]
+        is_even_period = period % 2
+
+        if is_even_period and disc_period == -1:
+            continue
+
+        has_conflict = check_schedule_conflict(grid, disc_timestamp)
+
+        if has_conflict:
+            continue
+
+        reached_hours += disc_wl
+        optatives_selected.append(discipline)
+        add_schedule_entry(grid, code, disc_timestamp)
+
+        if reached_hours >= expected_hours or len(optatives_selected) == max_optatives_per_period:
+            break
+
+
+    return optatives_selected
+
+
+def get_recommended_courses(disciplines: dict, optatives: list, top_order: list, student: dict) -> tuple:
+    pending_opt_wl = student.get("ch_optativas_pendentes")
     pending = student.get("disciplinas_pendentes")
     period = student.get("periodo")
 
     recommendations = []
+    conflicted_disciplines = []
     grid_matrix = [[False for _ in range(5)] for _ in range(15)]
 
     for code in top_order:
@@ -172,6 +209,7 @@ def get_recommended_courses(disciplines: dict, top_order: list, student: dict) -
         has_conflict = check_schedule_conflict(grid_matrix, disc_timestamp)
 
         if has_conflict:
+            conflicted_disciplines.append(disc)
             continue
 
         add_schedule_entry(grid_matrix, code, disc_timestamp)
@@ -187,9 +225,28 @@ def get_recommended_courses(disciplines: dict, top_order: list, student: dict) -
 
         recommendations.append(item)
 
-    
-    return (recommendations, grid_matrix)
-    
+    optatives_selected = get_optative_disciplines_for_period(optatives, grid_matrix, period, pending_opt_wl)
+
+    for optative in optatives_selected:
+        code = optative["sigla"]
+        disc_period = optative["periodo"]
+        disc_timestamp = optative["horarios"]
+
+        item = {
+            "sigla": code,
+            "periodo": disc_period,
+            "obrigatario": False,
+            "horarios": disc_timestamp,
+            "ch": discipline["ch"],
+            "prioridade": "LOW"
+        }
+
+        recommendations.append(item)
+
+    total_hours = sum([disc["ch"] * 16 for disc in recommendations])
+
+    return (recommendations, conflicted_disciplines, total_hours, grid_matrix)
+
 
 def generate_graph_view(matrix: dict, view_mode: Literal["view", "img"]) -> None:
     G = nx.DiGraph()
@@ -226,7 +283,7 @@ def display_recommendations(recommendations: list):
     for item in recommendations:
         workload = f"{item["ch"] * 16}h"
         mandatory = "Sim" if item["obrigatario"] else "Não"
-        priority = "Alta" if item["prioridade"] else "Baixa"
+        priority = "Alta" if item["prioridade"] == "HIGH" else "Baixa"
         timestamp = "-".join(item["horarios"])
 
         row = [
@@ -281,7 +338,16 @@ if __name__ == "__main__":
     data = read_file(f"disc-{course}.json")
     disciplines = {disc["sigla"]: disc for disc in data}
     top_order = topological_sorting(disciplines, pending, period)
-    (recommendations, grid) = get_recommended_courses(disciplines, top_order, student)
+    optatives = get_optatives_disciplines(data)
+
+    (recommendations, conflicted, total, grid) = get_recommended_courses(disciplines, optatives, top_order, student)
+
+    print("\nCurso: {} - Periodo: {} - Matérias Pendentes: {}".format(course.upper(), period, len(pending)))
+    print("\n{} Matérias Sugeridas {}\n".format("*" * 20, "*" * 20))
 
     display_recommendations(recommendations)
+    print(f"Carga Horaria Total: {total}h")
+
+    print("\n{} Grade Horária Estimada {}\n".format("*" * 20, "*" * 20))
     display_schedule_table(grid)
+    print(conflicted)
