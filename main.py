@@ -6,6 +6,8 @@ from networkx.drawing.nx_agraph import graphviz_layout
 from functools import reduce
 from tabulate import tabulate
 from typing import Literal, Union
+import entrada 
+
 
 time_period_range = {
     "M": (0, 5),
@@ -69,7 +71,7 @@ def topological_sorting(disciplines: dict, pending: list, period: int) -> list:
             continue
 
         if in_degree[code] == 0:
-            delay = max(0, period - period_map[code])
+            delay = max(0, int(period) - int(period_map[code]))
             queue.append((delay, code))
 
     queue.sort(reverse=True)
@@ -85,7 +87,7 @@ def topological_sorting(disciplines: dict, pending: list, period: int) -> list:
             in_degree[neighbor] -= 1
 
             if in_degree[neighbor] == 0:
-                delay = max(0, period, period_map[neighbor])
+                delay = max(0, int(period), int(period_map[neighbor]))
                 queue.append((delay, neighbor))
 
         queue = deque(sorted(queue, reverse=True))
@@ -138,7 +140,7 @@ def add_schedule_entry(grid: list, code: str, discipline_timestamp: list):
 
 
 def get_optative_disciplines_for_period(optatives: list, grid: list, period: int, hours_pending: int) -> list:
-    expected_hours = hours_pending / (8 - period)
+    expected_hours = int(hours_pending) / (8 - int(period))
     reached_hours = 0
     max_optatives_per_period = 5
     optatives_selected = []
@@ -148,7 +150,7 @@ def get_optative_disciplines_for_period(optatives: list, grid: list, period: int
         disc_timestamp = discipline["horarios"]
         disc_period = discipline["periodo"]
         disc_wl = discipline["ch"]
-        is_even_period = period % 2
+        is_even_period = int(period) % 2
 
         if is_even_period and disc_period == -1:
             continue
@@ -187,7 +189,7 @@ def get_recommended_courses(disciplines: dict, optatives: list, top_order: list,
         disc_period = discipline["periodo"]
         disc_mandatory = discipline["obrigatorio"]
 
-        if period % 2 != disc_period % 2:
+        if (int(period) % 2 != int(disc_period) % 2):
             continue
 
         disc_prereqs = discipline["requisitos"]
@@ -281,7 +283,8 @@ def display_recommendations(recommendations: list):
     table = []
 
     for item in recommendations:
-        workload = f"{item["ch"] * 16}h"
+        
+        workload = f'{item["ch"] * 16}h'
         mandatory = "Sim" if item["obrigatario"] else "Não"
         priority = "Alta" if item["prioridade"] == "HIGH" else "Baixa"
         timestamp = "-".join(item["horarios"])
@@ -319,28 +322,30 @@ def display_schedule_table(grid: list):
 
 
 if __name__ == "__main__":
-    students = read_file("students.json")
+    historico = input()
+    entrada.escrever_json(historico)
+    students = read_file("resultado.json")
 
-    for index, student in enumerate(students):
-        course = student["curso"]
-        period = student["periodo"]
-        pending = student["disciplinas_pendentes"]
+    #for index, student in enumerate(students):
+        #course = student["curso"]
+        #period = student["periodo"]
+        #pending = student["disciplinas_pendentes"]
 
-        print("{:02} - Curso: {} - Periodo: {} - Matérias Pendentes: {}".format(index + 1, course.upper(), period, len(pending)))
+        #print("{:02} - Curso: {} - Periodo: {} - Matérias Pendentes: {}".format(index + 1, course.upper(), period, len(pending)))
 
-    option = int(input("Escolha um dataset: "))
-    student = students[option - 1]
+    #option = int(input("Escolha um dataset: "))
+    #student = students[option - 1]
 
-    course = student["curso"]
-    period = student["periodo"]
-    pending = student["disciplinas_pendentes"]
+    course = students["curso"]
+    period = students["periodo"]
+    pending = students["disciplinas_pendentes"]
 
     data = read_file(f"disc-{course}.json")
     disciplines = {disc["sigla"]: disc for disc in data}
     top_order = topological_sorting(disciplines, pending, period)
     optatives = get_optatives_disciplines(data)
 
-    (recommendations, conflicted, total, grid) = get_recommended_courses(disciplines, optatives, top_order, student)
+    (recommendations, conflicted, total, grid) = get_recommended_courses(disciplines, optatives, top_order, students)
 
     print("\nCurso: {} - Periodo: {} - Matérias Pendentes: {}".format(course.upper(), period, len(pending)))
     print("\n{} Matérias Sugeridas {}\n".format("*" * 20, "*" * 20))
@@ -350,4 +355,4 @@ if __name__ == "__main__":
 
     print("\n{} Grade Horária Estimada {}\n".format("*" * 20, "*" * 20))
     display_schedule_table(grid)
-    print(conflicted)
+    #print(conflicted)

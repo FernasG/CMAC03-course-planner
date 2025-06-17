@@ -48,14 +48,13 @@ def extrair_dados_do_pdf(caminho_pdf):
         "ch_optativas_pendentes": ch_optativas_pendentes,
         "disciplinas_pendentes": disciplinas_pendentes
     }
+def escrever_json(caminho_pdf):
+   
+    dados = extrair_dados_do_pdf(caminho_pdf)
 
-# --------- EXECUÇÃO EXEMPLO ----------
-caminho_pdf = "historico_SIN-2.pdf"
-dados = extrair_dados_do_pdf(caminho_pdf)
+    # Salvar como JSON
+    with open("resultado.json", "w", encoding="utf-8") as f:
+        json.dump(dados, f, indent=2, ensure_ascii=False)
 
-# Salvar como JSON
-with open("resultado.json", "w", encoding="utf-8") as f:
-    json.dump(dados, f, indent=2, ensure_ascii=False)
-
-# Mostrar no terminal
-print(json.dumps(dados, indent=2, ensure_ascii=False))
+    # Mostrar no terminal
+    print(json.dumps(dados, indent=2, ensure_ascii=False))
