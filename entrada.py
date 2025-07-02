@@ -22,16 +22,16 @@ def extrair_dados_do_pdf(caminho_pdf):
     periodo = ""
     match_periodo = re.search(r"Perfil Inicial:\s*\d+\s*\n(\d+)", texto)
     if match_periodo:
-        periodo = match_periodo.group(1)
-   
+        periodo = int(match_periodo.group(1))
 
     # Carga horária optativas pendentes
-    ch_optativas_pendentes = "0"
-    trecho_optativas = re.search(r"Optativas.*?(\d+\s*h.*?){3}", texto)
-    if trecho_optativas:
-        horas = re.findall(r"(\d+)\s*h", trecho_optativas.group(0))
-        if len(horas) >= 3:
-            ch_optativas_pendentes = horas[2]  # 3ª ocorrência = PENDENTE
+    ch_optativas_pendentes = 0
+    match_pendente = re.search(r'Pendente\s+(\d+)\s*h\s+(\d+)\s*h\s+(\d+)\s*h', texto)
+
+    if match_pendente:
+        optativas = int(match_pendente.group(3))
+        if optativas:
+            ch_optativas_pendentes = optativas
 
     # Disciplinas pendentes (a seção começa com "Componentes Curriculares Obrigatórios Pendentes")
     pendentes_raw = re.search(r"Componentes Curriculares Obrigatórios Pendentes:(.*?)Optativas", texto, re.DOTALL)

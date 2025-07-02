@@ -322,7 +322,7 @@ def display_schedule_table(grid: list):
 
 
 if __name__ == "__main__":
-    historico = input()
+    historico = input("Digite o nome do arquivo de histórico: ")
     entrada.escrever_json(historico)
     students = read_file("resultado.json")
 
